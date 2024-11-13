@@ -1,10 +1,20 @@
-1. Run the programs in sequence (1, 2 and then 3)
-2. Change the path/directory inside every program file
+1. Run the programs in sequence (1, 2 and then 3)           <--------
+2. Change the path/directory inside every program file      <--------
 
-Program 1:
+Program 1: (1. generate_dataset_Econimic_Data_Generation_GDP_Urbanization_ImmigrationRate.py)
 # This file will help you to generate random dataset for GDP, Urbanization and Immigration
 # Task 1: Your task is to find real world data online and replace with randomly generated data
 # Task 2: The plots are plotted until 2023/2204, but you need to plot for another 30 years 
+
+Program 1: (test.py)
+# This file currently will take the real world data from the world bank if you have them downloaded the data. The files are also included in this repository.
+The files:
+API_NY.GDP.MKTP.CD_DS2_en_csv_v2_9865.csv (GPD data)
+API_SM.POP.NETM_DS2_en_csv_v2_10087.csv (Immigration Rate)
+API_SP.URB.TOTL.IN.ZS_DS2_en_csv_v2_10236.csv (Urbanization rate)
+
+P.S. The world bank data does not contain the data from Taiwan.
+We need to find the data for Taiwan. :D
 
 Program 2:
 # This program will help us to combine the population_data.csv and economic_data.csv 
