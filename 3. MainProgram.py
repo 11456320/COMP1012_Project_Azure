@@ -9,36 +9,32 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
+# =====================================================================================
 # Load combined data from CSV file  
+# Replace "combined_data.csv" to your file path here
+# "combined_data.csv" is obtained from running program 1 and 2
 data = pd.read_csv("08_Oct_BB/08_Oct/combined_data.csv", header=0)
 
+# Replace "population.csv" to your file path here
 population_data = pd.read_csv("08_Oct_BB/08_Oct/population_data.csv")
 
+# Replace "economic_data_custom.csv" to your file path here
+# "economic_data_custom.csv" is obtained from running program 1
 economic_data = pd.read_csv("08_Oct_BB/08_Oct/economic_data_custom.csv")
 
-pollution_data = pd.read_csv('08_Nov/08_Nov/pollution_data_1960_2023.csv')
+# Replace "extracted_population_data.csv" to your file path here
+pollution_data = pd.read_csv('08_Nov/08_Nov/extracted_pollution_data.csv')
+
+# Replace "immigration_data_custom.csv" to your file path here
+immigration_data = pd.read_csv('08_Nov/08_Nov/immigration_data_custom.csv')
 
 # Strip whitespace from column names (if necessary)
 data.columns = data.columns.str.strip()
 
 # List of Asian Tiger countries  
 asian_tiger_countries = ['Hong Kong', 'Singapore', 'South Korea', 'Taiwan']
-
-# # Function for plotting population data  
-# def plot_population_data(country_name, years, population, exp_pred, poly_pred, gompertz_pred):
-#     # Create subplot  
-#     plt.subplot(2, 2, i + 1)
-#     plt.scatter(years, population, label='Real Data', color='blue')
-#     plt.plot(extended_years, exp_pred, label='Exponential Model', color='orange')
-#     plt.plot(extended_years, poly_pred, label='Polynomial Model', color='green')
-#     plt.plot(extended_years, gompertz_pred, label='Gompertz Model', color='red')
-#     plt.title(f'Population Growth in {country_name}')
-#     plt.xlabel('Year')
-#     plt.ylabel('Population')
-#     plt.xticks(np.arange(years[0], years[-1] + 31, 5))
-#     plt.legend()
-#     plt.grid()
-#     plt.show()
+extracted_population_data = population_data[population_data["Country Name"].isin(asian_tiger_countries)]
+# =====================================================================================
 
 # Function to conduct sensitivity analysis  
 def sensitivity_analysis(df):
@@ -102,34 +98,9 @@ def sensitivity_analysis(df):
     plt.show()
 
 # Monte Carlo Simulation Function  
-def monte_carlo_simulation(country_name, initial_population, iterations=1000):
-    growth_rates = np.random.uniform(0.01, 0.05, size=iterations)  # Random growth rates  
-    years = np.arange(1960, 2024)
-    final_populations = []
-
-    for rate in growth_rates:
-        final_population = exponential_growth(initial_population, rate, years - years[0])  # Generate the full population array  
-        final_populations.append(final_population[-1])  # Append only the last value
-
-    plt.hist(final_populations, bins=30, alpha=0.7)
-    plt.title(f'Monte Carlo Simulation of Final Population for {country_name}')
-    plt.xlabel('Final Population')
-    plt.ylabel('Frequency')
-    plt.grid()
-    plt.show()
-
-# Economic Influences Analysis Function  
-def economic_influence_analysis():
+def monte_carlo_simulation():
     # Load the population dataset  
-    population_df = population_data
-    # "08_Nov/08_Nov/1population_data.csv"
-    # "08_Oct_BB/08_Oct/combined_data.csv"
-
-    asian_tiger_countries = ['Hong Kong', 'Singapore', 'South Korea', 'Taiwan']
-
-    population_df = population_df[population_df["Country Name"].isin(asian_tiger_countries)]
-
-    print(population_df)
+    population_df = extracted_population_data.copy()  # Replace with your file path
 
     # Transform the population DataFrame to long format  
     population_df = population_df.melt(id_vars=['Country Name'], 
@@ -140,11 +111,105 @@ def economic_influence_analysis():
     population_df['Year'] = population_df['Year'].astype(str)
 
     # Load the economic dataset  
-    economic_df = economic_data
+    economic_df = economic_data  # Replace with your file path  
+    economic_df['Year'] = economic_df['Year'].astype(str)  # Ensure Year is a string
+
+    # Load the immigration dataset  
+    immigration_df = immigration_data.copy()  # Ensure this file is created and available  
+    immigration_df['Year'] = immigration_df['Year'].astype(str)  # Ensure Year is a string
+
+    # Strip whitespace from column names  
+    population_df.columns = population_df.columns.str.strip()
+    economic_df.columns = economic_df.columns.str.strip()
+    immigration_df.columns = immigration_df.columns.str.strip()
+
+    # Print columns of each DataFrame for debugging  
+    print("Population DataFrame Columns:", population_df.columns)
+    print("Economic DataFrame Columns:", economic_df.columns)
+    print("Immigration DataFrame Columns:", immigration_df.columns)
+
+    # Merge datasets on 'Country Name' and 'Year'
+    merged_df = pd.merge(population_df, economic_df, on=['Country Name', 'Year'], how='inner')
+    merged_df = pd.merge(merged_df, immigration_df, on=['Country Name', 'Year'], how='inner')  # Merge with immigration data
+
+    # Print merged DataFrame columns for verification  
+    print("Merged DataFrame Columns:", merged_df.columns)
+
+    # Calculate Population Growth Percentage  
+    merged_df['Population Growth (%)'] = merged_df['Population'].pct_change() * 100
+
+    # Since 'Immigration Rate' is duplicated, we can keep one of them  
+    merged_df = merged_df.drop(columns=['Immigration Rate_y'])  # Drop the redundant column  
+    merged_df.rename(columns={'Immigration Rate_x': 'Immigration Rate'}, inplace=True)  # Rename the remaining column
+
+    # Ensure that the necessary columns exist  
+    if 'Population Growth (%)' not in merged_df.columns or 'Immigration Rate' not in merged_df.columns:
+        raise ValueError("Merged DataFrame must contain 'Population Growth (%)' and 'Immigration Rate' columns.")
+
+    # Define simulation parameters  
+    num_simulations = 1000  # Number of Monte Carlo simulations  
+    years_to_simulate = 10  # Years into the future to simulate  
+    result_population = []
+
+    # Run Monte Carlo simulations for each country  
+    for country in merged_df['Country Name'].unique():
+        country_data = merged_df[merged_df['Country Name'] == country]
+        
+        # Start with the last known population  
+        last_population = country_data['Population'].iloc[-1]
+        
+        # Run simulations  
+        simulations = []
+        for _ in range(num_simulations):
+            # print(_)
+            simulated_population = last_population
+            
+            for year in range(years_to_simulate):
+                # Randomly adjust population growth rate based on historical data  
+                growth_rate = np.random.normal(loc=country_data['Population Growth (%)'].mean(), 
+                                            scale=country_data['Population Growth (%)'].std())
+                immigration_rate = np.random.normal(loc=country_data['Immigration Rate'].mean(), 
+                                                    scale=country_data['Immigration Rate'].std())
+                
+                # Calculate new population (simple model: population growth + immigration)
+                simulated_population += simulated_population * (growth_rate / 100) + immigration_rate
+                
+            simulations.append(simulated_population)
+        
+        result_population.append((country, simulations))
+
+    # Plotting the results  
+    plt.figure(figsize=(12, 8))
+
+    for country, simulations in result_population:
+        plt.hist(simulations, bins=30, alpha=0.5, label=country)
+
+        plt.title('Monte Carlo Simulations of Future Population Growth')
+        plt.xlabel('Simulated Population After 10 Years')
+        plt.ylabel('Frequency')
+        plt.legend()
+        plt.grid()
+        plt.show()
+
+# Economic Influences Analysis Function  
+def economic_influence_analysis():
+    # Load the population dataset  
+    population_df = extracted_population_data.copy()
+
+    # Transform the population DataFrame to long format  
+    population_df = population_df.melt(id_vars=['Country Name'], 
+                                        var_name='Year', 
+                                        value_name='Population')
+
+    # Convert Year to string to match other datasets  
+    population_df['Year'] = population_df['Year'].astype(str)
+
+    # Load the economic dataset  
+    economic_df = economic_data.copy()
     economic_df['Year'] = economic_df['Year'].astype(str)  # Ensure Year is a string
 
     # Load the pollution dataset  
-    pollution_df = pollution_data
+    pollution_df = pollution_data.copy()
     pollution_df['Year'] = pollution_df['Year'].astype(str)  # Ensure Year is a string
 
     # Strip whitespace from column names  
@@ -181,41 +246,110 @@ def economic_influence_analysis():
     plt.show()
 
 # Environmental Factors Analysis Function  
-def environmental_factors_analysis(country_data):
-    urbanization_rate = country_data['Urbanization Rate'].values  # Assuming this data exists  
-    population = country_data['Population'].values  # Population from 1960 to 2023  
-    years = country_data['Year'].values  # Extract years directly from the DataFrame
+def environmental_factors_analysis():
+    # Load the population dataset  
+    population_df = extracted_population_data.copy()  # Replace with your file path
 
-    plt.figure(figsize=(10, 6))
-    plt.plot(years, population, label='Population', marker='o', color='blue')
+    # Transform the population DataFrame to long format  
+    population_df = population_df.melt(id_vars=['Country Name'], 
+                                        var_name='Year', 
+                                        value_name='Population')
 
-    # ==================================================================================================
-    plt.plot(years, population * urbanization_rate / 100, label='Urbanization Rate', marker='x', color='green')
-    # ==================================================================================================
+    # Convert Year to string to match other datasets  
+    population_df['Year'] = population_df['Year'].astype(str)
 
-    plt.title('Population vs Urbanization Rate for ' + country_data['Country Name'].values[0])
+    # Load the economic dataset  
+    economic_df = economic_data.copy()  # Replace with your file path  
+    economic_df['Year'] = economic_df['Year'].astype(str)  # Ensure Year is a string
+
+    # Load the pollution dataset  
+    pollution_df = pollution_data.copy()  # Updated path to the new pollution dataset  
+    pollution_df['Year'] = pollution_df['Year'].astype(str)  # Ensure Year is a string
+
+    # Strip whitespace from column names  
+    population_df.columns = population_df.columns.str.strip()
+    economic_df.columns = economic_df.columns.str.strip()
+    pollution_df.columns = pollution_df.columns.str.strip()
+
+    # Merge datasets on 'Country Name' and 'Year'
+    merged_df = pd.merge(population_df, economic_df, on=['Country Name', 'Year'], how='inner')
+    merged_df = pd.merge(merged_df, pollution_df, on=['Country Name', 'Year'], how='inner')  # Merge with pollution data
+
+    # Check if the merge was successful  
+    print("Merged DataFrame:")
+    print(merged_df.head())
+    print("\nMerged DataFrame Summary:")
+    print(merged_df.describe())
+
+    # Now plot pollution levels from 1960 to 2023 for each country  
+    plt.figure(figsize=(12, 8))
+    for country in merged_df['Country Name'].unique():
+        country_data = merged_df[merged_df['Country Name'] == country]
+
+        country_data['Pollution Level (PM2.5)'] = country_data['Pollution Level (PM2.5)'].astype(float)
+        
+        # Convert Year to numeric for proper plotting  
+        country_data['Year'] = country_data['Year'].astype(int)
+        
+        # Plotting pollution levels against years  
+        plt.plot(country_data['Year'], country_data['Pollution Level (PM2.5)'], marker='o', label=country)
+
+    plt.title('Pollution Levels (PM2.5) from 1960 to 2023')
     plt.xlabel('Year')
-    plt.ylabel('Value')
-    plt.legend()
+    plt.ylabel('Pollution Level (PM2.5) in µg/m³')
+    plt.xticks(range(1960, 2024, 2), rotation = 90)  # Set x-ticks for every 2 years  
     plt.grid()
+    plt.legend()
     plt.show()
 
 # Immigration Impact Analysis Function  
-def immigration_impact_analysis(country_data):
-    immigration_rate = country_data['Immigration Rate'].values  # Assuming this data exists  
-    population = country_data['Population'].values  # Population from 1960 to 2023  
-    years = country_data['Year'].values  # Extract years directly from the DataFrame
+def immigration_impact_analysis():
+    # Load the population dataset  
+    population_df = extracted_population_data.copy()
 
+    # =====================================================================================
+    # Load the economic dataset (Since the diagram actually only uses the immigration rate inside economic data,
+    #                            we directly use immigration data instead)
+    economic_df = immigration_data.copy()
+    # =====================================================================================
+
+    # Strip whitespace from column names  
+    population_df.columns = population_df.columns.str.strip()
+    economic_df.columns = economic_df.columns.str.strip()
+
+    # Merge datasets on 'Country Name'
+    merged_df = pd.merge(population_df, economic_df, on='Country Name', how='inner')
+
+    # Check if the merge was successful  
+    print("Merged DataFrame:")
+    print(merged_df.head())
+
+    # Plotting Immigration Rate vs Population Growth  
     plt.figure(figsize=(10, 6))
-    plt.plot(years, population, label='Population', marker='o', color='blue')
+    for country in merged_df['Country Name'].unique():
+        country_data = merged_df[merged_df['Country Name'] == country]
+        
+        # Calculate Population Growth for each year  
+        # Create a new column for Population Growth (%) for every year  
+        for year in range(1961, 2023):  # Assuming we have data from 1960 to 2023  
+            previous_year = str(year - 1)
+            current_year = str(year)
+            
+            if previous_year in country_data.columns and current_year in country_data.columns:
+                growth = ((country_data[current_year].values[0] - country_data[previous_year].values[0]) / 
+                        country_data[previous_year].values[0]) * 100
+                
+                # Append the growth value to the country_data DataFrame  
+                country_data.loc[country_data['Year'] == year, 'Population Growth (%)'] = growth
 
-    plt.plot(years, immigration_rate, label='Immigration Rate', marker='x', color='red')
+        # Now plot the immigration rate against population growth  
+        plt.scatter(country_data['Immigration Rate'], country_data['Population Growth (%)'], label=country)
 
-    plt.title('Population vs Immigration Rate for ' + country_data['Country Name'].values[0])
-    plt.xlabel('Year')
-    plt.ylabel('Value')
-    plt.legend()
+    plt.title('Impact of Immigration on Population Growth in Asian Tigers')
+    plt.xlabel('Immigration Rate')
+    plt.ylabel('Population Growth (%)')
     plt.grid()
+    plt.legend()
     plt.show()
 
 # Define the models  
@@ -236,21 +370,6 @@ for i, country_name in enumerate(asian_tiger_countries):
         # Extract population data for the selected country  
         years = country_data['Year'].values  # Get the years directly from the DataFrame  
         population = country_data['Population'].values  # Get the population directly from the DataFrame
-        gdp = country_data['GDP'].values  # Extract GDP data  
-        urbanization_rate = country_data['Urbanization Rate'].values  # Extract urbanization rate data  
-        immigration_rate = country_data['Immigration Rate'].values  # Extract immigration rate data
-
-                # Print the data for debugging  
-        # print(f"Data for {country_name}:")
-        # print("Years:", years)
-        # print("Population:", population)
-        # print("GDP:", gdp)
-        # print("Urbanization Rate:", urbanization_rate)
-        # print("Immigration Rate:", immigration_rate)
-        # print("GDP Min:", gdp.min(), "Max:", gdp.max())
-        # print("Urbanization Rate Min:", urbanization_rate.min(), "Max:", urbanization_rate.max())
-        # print("Immigration Rate Min:", immigration_rate.min(), "Max:", immigration_rate.max())
-        # print("NaNs in GDP:", country_data['GDP'].isnull().sum())
 
         # Verify the length of the population data  
         if len(population) != len(years):
@@ -282,16 +401,6 @@ for i, country_name in enumerate(asian_tiger_countries):
         plt.legend()
         plt.grid()
 
-        # Monte Carlo Simulation  
-        # monte_carlo_simulation(country_name, initial_population)
-
-
-
-        # # Environmental Factors Analysis  
-        # environmental_factors_analysis(country_data)
-
-        # # Immigration Impact Analysis  
-        # immigration_impact_analysis(country_data)
     else:
         print(f"No data found for {country_name}")
 
@@ -299,8 +408,17 @@ for i, country_name in enumerate(asian_tiger_countries):
 plt.tight_layout()
 plt.show()    
 
+# Monte Carlo Simulation  
+monte_carlo_simulation()
+
 # Sensitivity analysis  
 sensitivity_analysis(data)
 
 # Economic Influences Analysis  
 economic_influence_analysis()
+
+# Environmental Factors Analysis  
+environmental_factors_analysis()
+
+# Immigration Impact Analysis  
+immigration_impact_analysis()
