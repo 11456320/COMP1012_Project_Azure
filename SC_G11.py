@@ -4,17 +4,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
+your_path = "COMP1012_Project_Azure/COMP1012_Project_Azure/"
+
 # raw data from world bank
 # p.s. does not include Taiwan
 # https://data.worldbank.org/
-gdp_data = pd.read_csv("08_Oct_BB/08_Oct/data/Global_GDP_data.csv",header = 2)
-net_migrants_data = pd.read_csv("08_Oct_BB/08_Oct/data/Global_Net_Migration_data.csv",header = 2)
-urbanization_data = pd.read_csv("08_Oct_BB/08_Oct/data/Global_Urbanization_Rate_data.csv",header = 2)
+gdp_data = pd.read_csv(your_path + "Global_GDP_data.csv",header = 2)
+net_migrants_data = pd.read_csv(your_path + "Global_Net_Migration_data.csv",header = 2)
+urbanization_data = pd.read_csv(your_path + "Global_Urbanization_Rate_data.csv",header = 2)
 
 # raw Taiwan data
 # Source: https://nstatdb.dgbas.gov.tw/dgbasall/webMain.aspx?k=engmain (GDP, Yearly)
 # https://www.worldometers.info/world-population/taiwan-population/ (Net migration, Urbanization, per 5 year)
-taiwan_economic_data = pd.read_csv("08_Oct_BB/08_Oct/data/Taiwan_economic_data.csv", header = 3)
+taiwan_economic_data = pd.read_csv(your_path + "Taiwan_economic_data.csv", header = 3)
 
 # Since the source only have Net Migration and Urbanization every 5 year,
 # We use linear interpolation method in Pandas to fill in the missing Urbanization Rate
@@ -29,7 +31,7 @@ taiwan_economic_data["Immigration Rate"].fillna(net_migration_mean, inplace=True
 # (Optional)
 # Replace "filled_taiwan_economic_data.csv" to your file path here
 # Please keep the csv named as "filled_taiwan_economic_data.csv"
-taiwan_economic_data.to_csv('08_Oct_BB/08_Oct/data/filled_taiwan_economic_data.csv', index=False)
+taiwan_economic_data.to_csv(your_path + "filled_taiwan_economic_data.csv", index=False)
 
 column_list = gdp_data.columns.tolist()
 for i in range(3):
@@ -77,7 +79,7 @@ df.to_csv("08_Oct_BB/08_Oct/economic_data_custom.csv", index = False)
 # Hong Kong Source: https://www.moenv.gov.tw/Page/686030BBD5DFC8DD
 # Taiwan Source: https://cd.epic.epd.gov.hk/EPICDI/air/station/
 
-pollution_data = pd.read_csv("08_Nov/08_Nov/pollution_data.csv")
+pollution_data = pd.read_csv(your_path + "pollution_data.csv")
 
 year_list = pollution_data.columns.tolist()[1:]
 
@@ -99,17 +101,17 @@ df = pd.DataFrame(pollution_data_list, columns=column_format)
 
 # Replace "extracted_pollution_data.csv" to your file path here
 # Please keep the csv named as "extracted_pollution_data.csv"
-df.to_csv("08_Nov/08_Nov/extracted_pollution_data.csv", index = False)
+df.to_csv(your_path + "extracted_pollution_data.csv", index = False)
 
 # This program will help us to combine the population_data.csv and economic_data.csv 
 # files together
 
 # Load the economic data  
-economic_data_path = "08_Oct_BB/08_Oct/economic_data_custom.csv"
+economic_data_path = your_path + "economic_data_custom.csv"
 economic_data = pd.read_csv(economic_data_path)
 
 # Load the population data  
-population_data_path = "08_Oct_BB/08_Oct/population_data.csv"
+population_data_path = your_path + "population_data.csv"
 population_data = pd.read_csv(population_data_path)
 
 # Print the column names for clarity  
@@ -130,7 +132,7 @@ print(population_long.head())
 combined_data = pd.merge(economic_data, population_long, on=['Country Name', 'Year'], how='inner')
 
 # Save the combined DataFrame to a new CSV file  
-combined_data.to_csv("08_Oct_BB/08_Oct/combined_data.csv", index=False)
+combined_data.to_csv(your_path + "combined_data.csv", index=False)
 
 print("Combined data saved to combined_data.csv")
 
@@ -138,20 +140,20 @@ print("Combined data saved to combined_data.csv")
 # Load combined data from CSV file  
 # Replace "combined_data.csv" to your file path here
 # "combined_data.csv" is obtained from running program 1 and 2
-data = pd.read_csv("08_Oct_BB/08_Oct/combined_data.csv", header=0)
+data = pd.read_csv(your_path + "combined_data.csv", header=0)
 
 # Replace "population.csv" to your file path here
-population_data = pd.read_csv("08_Oct_BB/08_Oct/population_data.csv")
+population_data = pd.read_csv(your_path + "population_data.csv")
 
 # Replace "economic_data_custom.csv" to your file path here
 # "economic_data_custom.csv" is obtained from running program 1
-economic_data = pd.read_csv("08_Oct_BB/08_Oct/economic_data_custom.csv")
+economic_data = pd.read_csv(your_path + "economic_data_custom.csv")
 
 # Replace "extracted_population_data.csv" to your file path here
-pollution_data = pd.read_csv('08_Nov/08_Nov/extracted_pollution_data.csv')
+pollution_data = pd.read_csv(your_path + "extracted_pollution_data.csv")
 
 # Replace "immigration_data_custom.csv" to your file path here
-immigration_data = pd.read_csv('08_Nov/08_Nov/immigration_data_custom.csv')
+immigration_data = pd.read_csv(your_path + "immigration_data_custom.csv")
 
 # Strip whitespace from column names (if necessary)
 data.columns = data.columns.str.strip()
