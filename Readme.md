@@ -1,3 +1,11 @@
+# COMP1012 Semester Project - Project_Azure Grp 11
+## Group member
+23079573D TSE   YiuHang <-- Group Leader
+23078385D	LI	  SingYui
+23078608D	LEE	  HeungWang
+23078873D	TANG	ChiFung
+23078286D	LAI	TszYuen
+
 1. Run the programs in sequence (1, 2 and then 3)           <--------
 2. Change the path/directory inside every program file      <--------
 
