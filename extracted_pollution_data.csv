@@ -1,0 +1,257 @@
+Country Name,Year,Pollution Level (PM2.5)
+Hong Kong,1960,
+Hong Kong,1961,
+Hong Kong,1962,
+Hong Kong,1963,
+Hong Kong,1964,
+Hong Kong,1965,
+Hong Kong,1966,
+Hong Kong,1967,
+Hong Kong,1968,
+Hong Kong,1969,
+Hong Kong,1970,
+Hong Kong,1971,
+Hong Kong,1972,
+Hong Kong,1973,
+Hong Kong,1974,
+Hong Kong,1975,
+Hong Kong,1976,
+Hong Kong,1977,
+Hong Kong,1978,
+Hong Kong,1979,
+Hong Kong,1980,
+Hong Kong,1981,
+Hong Kong,1982,
+Hong Kong,1983,
+Hong Kong,1984,
+Hong Kong,1985,
+Hong Kong,1986,
+Hong Kong,1987,
+Hong Kong,1988,
+Hong Kong,1989,
+Hong Kong,1990,
+Hong Kong,1991,
+Hong Kong,1992,
+Hong Kong,1993,
+Hong Kong,1994,
+Hong Kong,1995,
+Hong Kong,1996,
+Hong Kong,1997,
+Hong Kong,1998,
+Hong Kong,1999,
+Hong Kong,2000,33.5
+Hong Kong,2001,37.25
+Hong Kong,2002,34.75
+Hong Kong,2003,42.66667
+Hong Kong,2004,47.0
+Hong Kong,2005,42.25
+Hong Kong,2006,40.5
+Hong Kong,2007,40.5
+Hong Kong,2008,37.25
+Hong Kong,2009,31.25
+Hong Kong,2010,30.25
+Hong Kong,2011,34.28571429
+Hong Kong,2012,29.35714286
+Hong Kong,2013,32.46153846
+Hong Kong,2014,29.46153846
+Hong Kong,2015,26.42857143
+Hong Kong,2016,22.85714286
+Hong Kong,2017,22.625
+Hong Kong,2018,20.75
+Hong Kong,2019,20.25
+Hong Kong,2020,15.75
+Hong Kong,2021,16.16666667
+Hong Kong,2022,14.61111111
+Hong Kong,2023,15.44444444
+Singapore,1960,
+Singapore,1961,
+Singapore,1962,
+Singapore,1963,
+Singapore,1964,
+Singapore,1965,
+Singapore,1966,
+Singapore,1967,
+Singapore,1968,
+Singapore,1969,
+Singapore,1970,
+Singapore,1971,
+Singapore,1972,
+Singapore,1973,
+Singapore,1974,
+Singapore,1975,
+Singapore,1976,
+Singapore,1977,
+Singapore,1978,
+Singapore,1979,
+Singapore,1980,
+Singapore,1981,
+Singapore,1982,
+Singapore,1983,
+Singapore,1984,
+Singapore,1985,
+Singapore,1986,
+Singapore,1987,
+Singapore,1988,
+Singapore,1989,
+Singapore,1990,35.03329263
+Singapore,1991,30.86528306
+Singapore,1992,27.07396399
+Singapore,1993,23.91824727
+Singapore,1994,21.65704475
+Singapore,1995,20.54926827
+Singapore,1996,20.2379666
+Singapore,1997,20.11910282
+Singapore,1998,20.08096025
+Singapore,1999,20.01182217
+Singapore,2000,19.79997192
+Singapore,2001,19.31426286
+Singapore,2002,18.58425257
+Singapore,2003,17.73928066
+Singapore,2004,16.90868676
+Singapore,2005,16.22181047
+Singapore,2006,15.60320415
+Singapore,2007,14.95527648
+Singapore,2008,14.37415164
+Singapore,2009,13.95595379
+Singapore,2010,13.7968071
+Singapore,2011,15.50309323
+Singapore,2012,16.92235993
+Singapore,2013,18.07666256
+Singapore,2014,17.28168859
+Singapore,2015,17.1833033
+Singapore,2016,15.90029489
+Singapore,2017,16.07688405
+Singapore,2018,15.97685716
+Singapore,2019,17.07590632
+Singapore,2020,13.86919559
+Singapore,2021,
+Singapore,2022,
+Singapore,2023,
+South Korea,1960,
+South Korea,1961,
+South Korea,1962,
+South Korea,1963,
+South Korea,1964,
+South Korea,1965,
+South Korea,1966,
+South Korea,1967,
+South Korea,1968,
+South Korea,1969,
+South Korea,1970,
+South Korea,1971,
+South Korea,1972,
+South Korea,1973,
+South Korea,1974,
+South Korea,1975,
+South Korea,1976,
+South Korea,1977,
+South Korea,1978,
+South Korea,1979,
+South Korea,1980,
+South Korea,1981,
+South Korea,1982,
+South Korea,1983,
+South Korea,1984,
+South Korea,1985,
+South Korea,1986,
+South Korea,1987,
+South Korea,1988,
+South Korea,1989,
+South Korea,1990,25.98121022
+South Korea,1991,25.83403313
+South Korea,1992,25.70271058
+South Korea,1993,25.59142131
+South Korea,1994,25.50434404
+South Korea,1995,25.44565751
+South Korea,1996,25.42758585
+South Korea,1997,25.44285366
+South Korea,1998,25.4663904
+South Korea,1999,25.47312552
+South Korea,2000,25.43798849
+South Korea,2001,25.34457248
+South Korea,2002,25.19651308
+South Korea,2003,24.99880342
+South Korea,2004,24.75643662
+South Korea,2005,24.47440579
+South Korea,2006,23.98378064
+South Korea,2007,23.25544772
+South Korea,2008,22.50412546
+South Korea,2009,21.9445323
+South Korea,2010,21.79138667
+South Korea,2011,24.88304504
+South Korea,2012,25.57679161
+South Korea,2013,27.49296584
+South Korea,2014,28.37600754
+South Korea,2015,26.28996201
+South Korea,2016,26.67043441
+South Korea,2017,26.00436711
+South Korea,2018,25.93439201
+South Korea,2019,26.01536343
+South Korea,2020,25.94398995
+South Korea,2021,
+South Korea,2022,
+South Korea,2023,
+Taiwan,1960,
+Taiwan,1961,
+Taiwan,1962,
+Taiwan,1963,
+Taiwan,1964,
+Taiwan,1965,
+Taiwan,1966,
+Taiwan,1967,
+Taiwan,1968,
+Taiwan,1969,
+Taiwan,1970,
+Taiwan,1971,
+Taiwan,1972,
+Taiwan,1973,
+Taiwan,1974,
+Taiwan,1975,
+Taiwan,1976,
+Taiwan,1977,
+Taiwan,1978,
+Taiwan,1979,
+Taiwan,1980,
+Taiwan,1981,
+Taiwan,1982,
+Taiwan,1983,
+Taiwan,1984,
+Taiwan,1985,
+Taiwan,1986,
+Taiwan,1987,
+Taiwan,1988,
+Taiwan,1989,
+Taiwan,1990,
+Taiwan,1991,
+Taiwan,1992,
+Taiwan,1993,
+Taiwan,1994,
+Taiwan,1995,
+Taiwan,1996,
+Taiwan,1997,
+Taiwan,1998,
+Taiwan,1999,
+Taiwan,2000,
+Taiwan,2001,
+Taiwan,2002,
+Taiwan,2003,
+Taiwan,2004,
+Taiwan,2005,
+Taiwan,2006,
+Taiwan,2007,
+Taiwan,2008,
+Taiwan,2009,
+Taiwan,2010,
+Taiwan,2011,
+Taiwan,2012,
+Taiwan,2013,24.0
+Taiwan,2014,
+Taiwan,2015,22.0
+Taiwan,2016,20.9
+Taiwan,2017,20.7
+Taiwan,2018,19.0
+Taiwan,2019,17.2
+Taiwan,2020,15.1
+Taiwan,2021,15.9
+Taiwan,2022,13.1
+Taiwan,2023,14.7

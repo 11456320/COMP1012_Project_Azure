@@ -1,0 +1,257 @@
+Country Name,Year,Immigration Rate
+Hong Kong,1960,6.458
+Hong Kong,1961,3.744
+Hong Kong,1962,1.031
+Hong Kong,1963,-1.682
+Hong Kong,1964,-0.563
+Hong Kong,1965,0.556
+Hong Kong,1966,1.676
+Hong Kong,1967,2.795
+Hong Kong,1968,3.914
+Hong Kong,1969,3.866
+Hong Kong,1970,3.817
+Hong Kong,1971,3.769
+Hong Kong,1972,3.72
+Hong Kong,1973,3.672
+Hong Kong,1974,6.379
+Hong Kong,1975,9.086
+Hong Kong,1976,11.792
+Hong Kong,1977,14.499
+Hong Kong,1978,17.206
+Hong Kong,1979,15.03
+Hong Kong,1980,12.854
+Hong Kong,1981,10.678
+Hong Kong,1982,8.502
+Hong Kong,1983,6.326
+Hong Kong,1984,6.668
+Hong Kong,1985,7.01
+Hong Kong,1986,7.351
+Hong Kong,1987,7.693
+Hong Kong,1988,8.035
+Hong Kong,1989,7.488
+Hong Kong,1990,6.941
+Hong Kong,1991,6.393
+Hong Kong,1992,5.846
+Hong Kong,1993,5.299
+Hong Kong,1994,6.607
+Hong Kong,1995,7.916
+Hong Kong,1996,9.224
+Hong Kong,1997,10.533
+Hong Kong,1998,11.841
+Hong Kong,1999,9.86
+Hong Kong,2000,7.88
+Hong Kong,2001,5.899
+Hong Kong,2002,3.919
+Hong Kong,2003,1.938
+Hong Kong,2004,2.073
+Hong Kong,2005,2.208
+Hong Kong,2006,2.344
+Hong Kong,2007,2.479
+Hong Kong,2008,2.614
+Hong Kong,2009,2.515
+Hong Kong,2010,2.415
+Hong Kong,2011,2.316
+Hong Kong,2012,2.216
+Hong Kong,2013,2.117
+Hong Kong,2014,2.492
+Hong Kong,2015,2.867
+Hong Kong,2016,3.242
+Hong Kong,2017,3.617
+Hong Kong,2018,3.992
+Hong Kong,2019,3.823
+Hong Kong,2020,3.654
+Hong Kong,2021,3.485
+Hong Kong,2022,3.316
+Hong Kong,2023,3.147
+South Korea,1960,1.386
+South Korea,1961,0.754
+South Korea,1962,0.122
+South Korea,1963,-0.51
+South Korea,1964,-0.515
+South Korea,1965,-0.52
+South Korea,1966,-0.526
+South Korea,1967,-0.531
+South Korea,1968,-0.536
+South Korea,1969,-0.677
+South Korea,1970,-0.819
+South Korea,1971,-0.96
+South Korea,1972,-1.102
+South Korea,1973,-1.243
+South Korea,1974,-1.174
+South Korea,1975,-1.106
+South Korea,1976,-1.037
+South Korea,1977,-0.969
+South Korea,1978,-0.9
+South Korea,1979,-0.626
+South Korea,1980,-0.352
+South Korea,1981,-0.077
+South Korea,1982,0.197
+South Korea,1983,0.471
+South Korea,1984,0.54
+South Korea,1985,0.609
+South Korea,1986,0.677
+South Korea,1987,0.746
+South Korea,1988,0.815
+South Korea,1989,0.717
+South Korea,1990,0.619
+South Korea,1991,0.52
+South Korea,1992,0.422
+South Korea,1993,0.324
+South Korea,1994,0.397
+South Korea,1995,0.47
+South Korea,1996,0.542
+South Korea,1997,0.615
+South Korea,1998,0.688
+South Korea,1999,0.618
+South Korea,2000,0.548
+South Korea,2001,0.478
+South Korea,2002,0.408
+South Korea,2003,0.338
+South Korea,2004,0.143
+South Korea,2005,-0.052
+South Korea,2006,-0.247
+South Korea,2007,-0.442
+South Korea,2008,-0.637
+South Korea,2009,-0.19
+South Korea,2010,0.257
+South Korea,2011,0.705
+South Korea,2012,1.152
+South Korea,2013,1.599
+South Korea,2014,1.325
+South Korea,2015,1.051
+South Korea,2016,0.778
+South Korea,2017,0.504
+South Korea,2018,0.23
+South Korea,2019,0.262
+South Korea,2020,0.294
+South Korea,2021,0.326
+South Korea,2022,0.358
+South Korea,2023,0.39
+Taiwan,1960,1.748
+Taiwan,1961,2.572
+Taiwan,1962,3.396
+Taiwan,1963,4.22
+Taiwan,1964,4.387
+Taiwan,1965,4.553
+Taiwan,1966,4.72
+Taiwan,1967,4.886
+Taiwan,1968,5.053
+Taiwan,1969,3.979
+Taiwan,1970,2.904
+Taiwan,1971,1.83
+Taiwan,1972,0.755
+Taiwan,1973,-0.319
+Taiwan,1974,-0.744
+Taiwan,1975,-1.169
+Taiwan,1976,-1.594
+Taiwan,1977,-2.019
+Taiwan,1978,-2.444
+Taiwan,1979,-2.086
+Taiwan,1980,-1.729
+Taiwan,1981,-1.371
+Taiwan,1982,-1.014
+Taiwan,1983,-0.656
+Taiwan,1984,-0.364
+Taiwan,1985,-0.072
+Taiwan,1986,0.22
+Taiwan,1987,0.512
+Taiwan,1988,0.804
+Taiwan,1989,0.356
+Taiwan,1990,-0.091
+Taiwan,1991,-0.539
+Taiwan,1992,-0.986
+Taiwan,1993,-1.434
+Taiwan,1994,-1.609
+Taiwan,1995,-1.784
+Taiwan,1996,-1.958
+Taiwan,1997,-2.133
+Taiwan,1998,-2.308
+Taiwan,1999,-1.479
+Taiwan,2000,-0.65
+Taiwan,2001,0.178
+Taiwan,2002,1.007
+Taiwan,2003,1.836
+Taiwan,2004,1.905
+Taiwan,2005,1.973
+Taiwan,2006,2.042
+Taiwan,2007,2.11
+Taiwan,2008,2.179
+Taiwan,2009,2.034
+Taiwan,2010,1.889
+Taiwan,2011,1.745
+Taiwan,2012,1.6
+Taiwan,2013,1.455
+Taiwan,2014,1.417
+Taiwan,2015,1.38
+Taiwan,2016,1.342
+Taiwan,2017,1.305
+Taiwan,2018,1.267
+Taiwan,2019,1.215
+Taiwan,2020,1.162
+Taiwan,2021,1.11
+Taiwan,2022,1.057
+Taiwan,2023,1.005
+Singapore,1960,5.576
+Singapore,1961,3.734
+Singapore,1962,1.891
+Singapore,1963,0.049
+Singapore,1964,0.032
+Singapore,1965,0.015
+Singapore,1966,-0.003
+Singapore,1967,-0.02
+Singapore,1968,-0.037
+Singapore,1969,0.079
+Singapore,1970,0.195
+Singapore,1971,0.311
+Singapore,1972,0.427
+Singapore,1973,0.543
+Singapore,1974,0.679
+Singapore,1975,0.815
+Singapore,1976,0.95
+Singapore,1977,1.086
+Singapore,1978,1.222
+Singapore,1979,3.132
+Singapore,1980,5.042
+Singapore,1981,6.952
+Singapore,1982,8.862
+Singapore,1983,10.772
+Singapore,1984,10.294
+Singapore,1985,9.815
+Singapore,1986,9.337
+Singapore,1987,8.858
+Singapore,1988,8.38
+Singapore,1989,10.348
+Singapore,1990,12.316
+Singapore,1991,14.284
+Singapore,1992,16.252
+Singapore,1993,18.22
+Singapore,1994,17.981
+Singapore,1995,17.742
+Singapore,1996,17.504
+Singapore,1997,17.265
+Singapore,1998,17.026
+Singapore,1999,14.516
+Singapore,2000,12.005
+Singapore,2001,9.495
+Singapore,2002,6.984
+Singapore,2003,4.474
+Singapore,2004,9.72
+Singapore,2005,14.967
+Singapore,2006,20.213
+Singapore,2007,25.46
+Singapore,2008,30.706
+Singapore,2009,26.93
+Singapore,2010,23.154
+Singapore,2011,19.378
+Singapore,2012,15.602
+Singapore,2013,11.826
+Singapore,2014,10.406
+Singapore,2015,8.985
+Singapore,2016,7.565
+Singapore,2017,6.144
+Singapore,2018,4.724
+Singapore,2019,4.686
+Singapore,2020,4.647
+Singapore,2021,4.609
+Singapore,2022,4.57
+Singapore,2023,4.532
