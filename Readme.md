@@ -17,30 +17,52 @@
    <dir>/.venv
    <dir>/COMP1012_Project_Azure.zip
    ```
+2. Unzip the COMP1012_Project_Azure.zip file
+
 3. Change the path/directory inside every program file
 
-Program 1: (1. generate_dataset_Econimic_Data_Generation_GDP_Urbanization_ImmigrationRate.py)
-# This file will help you to generate random dataset for GDP, Urbanization and Immigration
-# Task 1: Your task is to find real world data online and replace with randomly generated data
-# Task 2: The plots are plotted until 2023/2204, but you need to plot for another 30 years 
+   If the zip file is placed under your vscode virtual environment properly, the path/directory of the csv file inside every program file should be
+   `"COMP1012_Project_Azure/COMP1012_Project_Azure/<data.csv>"`
 
-Program 1: (test.py)                                        <--------
-# This file currently will take the real world data from the world bank if you have them downloaded the data. The files are also included in this repository.
-The files:
-API_NY.GDP.MKTP.CD_DS2_en_csv_v2_9865.csv (GPD data)
-API_SM.POP.NETM_DS2_en_csv_v2_10087.csv (Immigration Rate)
-API_SP.URB.TOTL.IN.ZS_DS2_en_csv_v2_10236.csv (Urbanization rate)
+4. Install the libraries required
+   ```
+   pip install pandas
+   pip install numpy
+   pip install matplotlib
+   pip install scipy
+   ```
 
-P.S. The world bank data does not contain the data from Taiwan.
-We need to find the data for Taiwan. :D
+5. Run the main program `SC_G11.py`
 
-Program 2: (2. combining_eco_data+popu_data.py)
-# This program will help us to combine the population_data.csv and economic_data.csv 
-# files together
+## Bonus module
 
-Program 3: (3. MainProgram.py)
-# After combining both csv files then you can run this main program
-# NOTE 1: You need to still replace random economic data with real data (if possible)
-# NOTE 2: You also need to plot the data for the next 30 years (.i.e.; 2023+30years) 
-# NOTE 3: Why the economic_data plots are almost equal to zero. Is it because of random data?
-# Exponential Model is suppose to fit the actual data curve perfectly... Can we design this?
+   [0.25 Points] 1. Sensitivity Analysis:
+   
+   A comprehensive sensitivity analysis will be conducted to understand how changes in key parameters (such
+   as birth rates, death rates, and immigration) affect population growth predictions. This analysis will identify which
+   factors have the most significant impact on growth and provide insights into the robustness of the forecasts.
+   
+   [0.25 Points] 2. Economic Influences:
+   
+   You will examine how economic factors, such as GDP growth and employment rates, influence population
+   growth in the Asian Tigers. This component will involve analyzing historical economic data alongside population
+   trends to identify correlations and trends that can inform construction planning.
+   
+   [0.25 Points] 3. Environmental Factors:
+   
+   This analysis will assess the impact of environmental factors (e.g., pollution levels, urbanization rates) on
+   population dynamics. Understanding how environmental conditions affect population growth is vital for
+   sustainable construction practices and urban development policies.
+   
+   [0.25 Points] 4. Stochastic Modeling Using Monte Carlo Simulations:
+   
+   You will introduce randomness into the population growth models through Monte Carlo simulations. This
+   component will simulate various scenarios that account for uncertainties in growth rates, immigration, and other
+   demographic factors. By visualizing the range of possible outcomes, stakeholders will gain a clearer
+   understanding of the potential variability in future population growth.
+   
+   [0.20 Points] 5. Impact of Immigration:
+   
+   An analysis of the role of immigration in shaping population growth trends in the Asian Tigers will be
+   conducted. This component will compare historical immigration data against population changes to understand
+   how immigration patterns affect overall demographic dynamics.
