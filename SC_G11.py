@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
-your_path = "COMP1012_Project_Azure/COMP1012_Project_Azure/"
+your_path = "COMP1012_Project_Azure-main/COMP1012_Project_Azure-main/"
 
 # raw data from world bank
 # p.s. does not include Taiwan
@@ -69,7 +69,7 @@ df = pd.DataFrame(economic_data, columns=column_format)
 
 # Replace "economic_data_custom.csv" to your file path here
 # Please keep the csv named as "economic_data_custom.csv"
-df.to_csv("08_Oct_BB/08_Oct/economic_data_custom.csv", index = False)
+df.to_csv(your_path + "economic_data_custom.csv", index = False)
 
 # =======================================================================
 
