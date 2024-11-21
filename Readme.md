@@ -1,4 +1,7 @@
 # COMP1012 Semester Project - Project_Azure Grp 11
+
+COMP1012 Semester Project
+
 ## Group member
 23079573D TSE   YiuHang <-- Group Leader
 
@@ -22,9 +25,14 @@
 3. Change the path/directory inside every program file
 
    If the zip file is placed under your vscode virtual environment properly, the path/directory of the csv file inside every program file should be
-   `"COMP1012_Project_Azure/COMP1012_Project_Azure/<data.csv>"`
+   `"COMP1012_Project_Azure-main/COMP1012_Project_Azure-main/<data.csv>"`
 
-4. Install the libraries required
+   ```
+   # Replace <your_path> to your own vscode path
+   your_path = "COMP1012_Project_Azure-main/COMP1012_Project_Azure-main/"
+   ```
+
+5. Install the libraries required
    ```
    pip install pandas
    pip install numpy
@@ -32,7 +40,7 @@
    pip install scipy
    ```
 
-5. Run the main program `SC_G11.py`
+6. Run the main program `SC_G11.py`
 
 ## Bonus module
 
