@@ -10,8 +10,14 @@
 
 23078286D	LAI	TszYuen
 
-1. Run the programs in sequence (1, 2 and then 3)           <--------
-2. Change the path/directory inside every program file      <--------
+## How to run the program
+1. Download this repository and unzip it to your vscode virtual environment directory.
+   Like this:
+   ```
+   <dir>/.venv
+   <dir>/COMP1012_Project_Azure.zip
+   ```
+3. Change the path/directory inside every program file
 
 Program 1: (1. generate_dataset_Econimic_Data_Generation_GDP_Urbanization_ImmigrationRate.py)
 # This file will help you to generate random dataset for GDP, Urbanization and Immigration
