@@ -78,6 +78,7 @@ df.to_csv(your_path + "economic_data_custom.csv", index = False)
 # raw pollution data
 # Hong Kong Source: https://www.moenv.gov.tw/Page/686030BBD5DFC8DD
 # Taiwan Source: https://cd.epic.epd.gov.hk/EPICDI/air/station/
+# World bank source: https://databank.worldbank.org/source/world-development-indicators/Series/EN.ATM.PM25.MC.M3
 
 pollution_data = pd.read_csv(your_path + "pollution_data.csv")
 
