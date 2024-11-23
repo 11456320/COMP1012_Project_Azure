@@ -9,14 +9,14 @@ your_path = "COMP1012_Project_Azure-main/COMP1012_Project_Azure-main/"
 # raw data from world bank
 # p.s. does not include Taiwan
 # https://data.worldbank.org/
-gdp_data = pd.read_csv(your_path + "Global_GDP_data.csv",header = 2)
-net_migrants_data = pd.read_csv(your_path + "Global_Net_Migration_data.csv",header = 2)
-urbanization_data = pd.read_csv(your_path + "Global_Urbanization_Rate_data.csv",header = 2)
+gdp_data = pd.read_csv(your_path + "data/Global_GDP_data.csv",header = 2)
+net_migrants_data = pd.read_csv(your_path + "data/Global_Net_Migration_data.csv",header = 2)
+urbanization_data = pd.read_csv(your_path + "data/Global_Urbanization_Rate_data.csv",header = 2)
 
 # raw Taiwan data
 # Source: https://nstatdb.dgbas.gov.tw/dgbasall/webMain.aspx?k=engmain (GDP, Yearly)
 # https://www.worldometers.info/world-population/taiwan-population/ (Net migration, Urbanization, per 5 year)
-taiwan_economic_data = pd.read_csv(your_path + "Taiwan_economic_data.csv", header = 3)
+taiwan_economic_data = pd.read_csv(your_path + "data/Taiwan_economic_data.csv", header = 3)
 
 # Since the source only have Net Migration and Urbanization every 5 year,
 # We use linear interpolation method in Pandas to fill in the missing Urbanization Rate
@@ -31,7 +31,7 @@ taiwan_economic_data["Immigration Rate"].fillna(net_migration_mean, inplace=True
 # (Optional)
 # Replace "filled_taiwan_economic_data.csv" to your file path here
 # Please keep the csv named as "filled_taiwan_economic_data.csv"
-taiwan_economic_data.to_csv(your_path + "filled_taiwan_economic_data.csv", index=False)
+taiwan_economic_data.to_csv(your_path + "data/filled_taiwan_economic_data.csv", index=False)
 
 column_list = gdp_data.columns.tolist()
 for i in range(3):
@@ -69,7 +69,7 @@ df = pd.DataFrame(economic_data, columns=column_format)
 
 # Replace "economic_data_custom.csv" to your file path here
 # Please keep the csv named as "economic_data_custom.csv"
-df.to_csv(your_path + "economic_data_custom.csv", index = False)
+df.to_csv(your_path + "data/economic_data_custom.csv", index = False)
 
 # =======================================================================
 
@@ -78,9 +78,8 @@ df.to_csv(your_path + "economic_data_custom.csv", index = False)
 # raw pollution data
 # Hong Kong Source: https://www.moenv.gov.tw/Page/686030BBD5DFC8DD
 # Taiwan Source: https://cd.epic.epd.gov.hk/EPICDI/air/station/
-# World bank source: https://databank.worldbank.org/source/world-development-indicators/Series/EN.ATM.PM25.MC.M3
 
-pollution_data = pd.read_csv(your_path + "pollution_data.csv")
+pollution_data = pd.read_csv(your_path + "data/pollution_data.csv")
 
 year_list = pollution_data.columns.tolist()[1:]
 
@@ -102,17 +101,17 @@ df = pd.DataFrame(pollution_data_list, columns=column_format)
 
 # Replace "extracted_pollution_data.csv" to your file path here
 # Please keep the csv named as "extracted_pollution_data.csv"
-df.to_csv(your_path + "extracted_pollution_data.csv", index = False)
+df.to_csv(your_path + "data/extracted_pollution_data.csv", index = False)
 
 # This program will help us to combine the population_data.csv and economic_data.csv 
 # files together
 
 # Load the economic data  
-economic_data_path = your_path + "economic_data_custom.csv"
+economic_data_path = your_path + "data/economic_data_custom.csv"
 economic_data = pd.read_csv(economic_data_path)
 
 # Load the population data  
-population_data_path = your_path + "population_data.csv"
+population_data_path = your_path + "data/population_data.csv"
 population_data = pd.read_csv(population_data_path)
 
 # Print the column names for clarity  
@@ -133,7 +132,7 @@ print(population_long.head())
 combined_data = pd.merge(economic_data, population_long, on=['Country Name', 'Year'], how='inner')
 
 # Save the combined DataFrame to a new CSV file  
-combined_data.to_csv(your_path + "combined_data.csv", index=False)
+combined_data.to_csv(your_path + "data/combined_data.csv", index=False)
 
 print("Combined data saved to combined_data.csv")
 
@@ -141,20 +140,20 @@ print("Combined data saved to combined_data.csv")
 # Load combined data from CSV file  
 # Replace "combined_data.csv" to your file path here
 # "combined_data.csv" is obtained from running program 1 and 2
-data = pd.read_csv(your_path + "combined_data.csv", header=0)
+data = pd.read_csv(your_path + "data/combined_data.csv", header=0)
 
 # Replace "population.csv" to your file path here
-population_data = pd.read_csv(your_path + "population_data.csv")
+population_data = pd.read_csv(your_path + "data/population_data.csv")
 
 # Replace "economic_data_custom.csv" to your file path here
 # "economic_data_custom.csv" is obtained from running program 1
-economic_data = pd.read_csv(your_path + "economic_data_custom.csv")
+economic_data = pd.read_csv(your_path + "data/economic_data_custom.csv")
 
 # Replace "extracted_population_data.csv" to your file path here
-pollution_data = pd.read_csv(your_path + "extracted_pollution_data.csv")
+pollution_data = pd.read_csv(your_path + "data/extracted_pollution_data.csv")
 
 # Replace "immigration_data_custom.csv" to your file path here
-immigration_data = pd.read_csv(your_path + "immigration_data_custom.csv")
+immigration_data = pd.read_csv(your_path + "data/immigration_data_custom.csv")
 
 # Strip whitespace from column names (if necessary)
 data.columns = data.columns.str.strip()
@@ -223,6 +222,7 @@ def sensitivity_analysis(df):
     plt.axhline(0, color='red', linestyle='--')  # Zero growth line  
     plt.legend()
     plt.grid()
+    plt.savefig(f'{your_path}plotted_images/sensitivity_analysis.jpg', dpi=300)
     plt.show()
 
 # Monte Carlo Simulation Function  
@@ -317,6 +317,7 @@ def monte_carlo_simulation():
         plt.ylabel('Frequency')
         plt.legend()
         plt.grid()
+        plt.savefig(f'{your_path}plotted_images/{country}_monte_carlo_simulation.jpg', dpi=300)
         plt.show()
 
 # Economic Influences Analysis Function  
@@ -371,6 +372,7 @@ def economic_influence_analysis():
     plt.ylabel('Population Growth (%)')
     plt.grid()
     plt.legend()
+    plt.savefig(f'{your_path}plotted_images/economic_influence_analysis.jpg', dpi=300)
     plt.show()
 
 # Environmental Factors Analysis Function  
@@ -428,6 +430,7 @@ def environmental_factors_analysis():
     plt.xticks(range(1960, 2024, 2), rotation = 90)  # Set x-ticks for every 2 years  
     plt.grid()
     plt.legend()
+    plt.savefig(f'{your_path}plotted_images/environmental_factors_analysis.jpg', dpi=300)
     plt.show()
 
 # Immigration Impact Analysis Function  
@@ -478,6 +481,7 @@ def immigration_impact_analysis():
     plt.ylabel('Population Growth (%)')
     plt.grid()
     plt.legend()
+    plt.savefig(f'{your_path}plotted_images/immigration_impact_analysis.jpg', dpi=300)
     plt.show()
 
 # Define the models  
@@ -516,6 +520,10 @@ for i, country_name in enumerate(asian_tiger_countries):
         poly_pred = polynomial_model(extended_years - years[0], *popt_poly)
         gompertz_pred = gompertz(extended_years - years[0], *popt_gom)
 
+        print(f"{country_name} exp_pred: {exp_pred}")
+        print(f"{country_name} poly_pred: {poly_pred}")
+        print(f"{country_name} gompertz_pred: {gompertz_pred}")
+
         # Create subplot  
         plt.subplot(2, 2, i + 1)
         plt.scatter(years, population, label='Real Data', color='blue')
@@ -534,6 +542,7 @@ for i, country_name in enumerate(asian_tiger_countries):
 
 # Adjust layout and show plots  
 plt.tight_layout()
+plt.savefig(f'{your_path}plotted_images/population_prediction.jpg', dpi=300)
 plt.show()    
 
 # Monte Carlo Simulation  
