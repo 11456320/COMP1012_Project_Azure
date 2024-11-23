@@ -2,12 +2,14 @@
 
 COMP1012 Semester Project
 
+https://github.com/11456320/COMP1012_Project_Azure
+
 ## Group member
-23079573D TSE   YiuHang <-- Group Leader
+23079573D   TSE   YiuHang <-- Group Leader
 
-23078385D	LI	  SingYui
+23078385D	LI	   SingYui
 
-23078608D	LEE	  HeungWang
+23078608D	LEE	HeungWang
 
 23078873D	TANG	ChiFung
 
@@ -18,18 +20,24 @@ COMP1012 Semester Project
    Like this:
    ```
    <dir>/.venv
-   <dir>/COMP1012_Project_Azure.zip
+   <dir>/COMP1012_Project_Azure-main.zip
    ```
-2. Unzip the COMP1012_Project_Azure.zip file
+2. Unzip the `COMP1012_Project_Azure-main.zip` file
 
 3. Change the path/directory inside every program file
 
    If the zip file is placed under your vscode virtual environment properly, the path/directory of the csv file inside every program file should be
-   `"COMP1012_Project_Azure-main/COMP1012_Project_Azure-main/<data.csv>"`
+   `"COMP1012_Project_Azure-main/COMP1012_Project_Azure-main/data/<data.csv>"` and the output graph should be `"COMP1012_Project_Azure-main/COMP1012_Project_Azure-main/plotted_images/<plotted_images.csv>"`
 
    ```
    # Replace <your_path> to your own vscode path
    your_path = "COMP1012_Project_Azure-main/COMP1012_Project_Azure-main/"
+
+   # This is how the program read the csv file
+   dataframe = pd.read_csv(your_path + "data/<data.csv>")
+
+   # This is how the program save the graph as .jpg format
+   plt.savefig(f"{your_path}plotted_images/<plotted_images.jpg>", dpi=300)
    ```
 
 5. Install the libraries required
@@ -74,3 +82,39 @@ COMP1012 Semester Project
    An analysis of the role of immigration in shaping population growth trends in the Asian Tigers will be
    conducted. This component will compare historical immigration data against population changes to understand
    how immigration patterns affect overall demographic dynamics.
+
+## Expected output
+
+1. Population Prediction for the next 30 years using different mathematical models
+
+![](https://github.com/11456320/COMP1012_Project_Azure/blob/main/plotted_images/population_prediction.jpg)
+
+2. Sensitivity Analysis
+
+![](https://github.com/11456320/COMP1012_Project_Azure/blob/main/plotted_images/sensitivity_analysis.jpg)
+
+3. Economic Influences
+
+![](https://github.com/11456320/COMP1012_Project_Azure/blob/main/plotted_images/economic_influence_analysis.jpg)
+
+4. Environmental Factors
+
+![](https://github.com/11456320/COMP1012_Project_Azure/blob/main/plotted_images/environmental_factors_analysis.jpg)
+
+5. Stochastic Modeling Using Monte Carlo Simulations
+
+Hong Kong:
+![](https://github.com/11456320/COMP1012_Project_Azure/blob/main/plotted_images/Hong%20Kong_monte_carlo_simulation.jpg)
+
+Singapore:
+![](https://github.com/11456320/COMP1012_Project_Azure/blob/main/plotted_images/Singapore_monte_carlo_simulation.jpg)
+
+South Korea:
+![](https://github.com/11456320/COMP1012_Project_Azure/blob/main/plotted_images/South%20Korea_monte_carlo_simulation.jpg)
+
+Taiwan:
+![](https://github.com/11456320/COMP1012_Project_Azure/blob/main/plotted_images/Taiwan_monte_carlo_simulation.jpg)
+
+6. Impact of Immigration
+
+![](https://github.com/11456320/COMP1012_Project_Azure/blob/main/plotted_images/immigration_impact_analysis.jpg)
