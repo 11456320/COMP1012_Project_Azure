@@ -2,6 +2,7 @@
 
 COMP1012 Semester Project
 
+Please view this readme_G11.txt in Github
 https://github.com/11456320/COMP1012_Project_Azure
 
 ## Group member
